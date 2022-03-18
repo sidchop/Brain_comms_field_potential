@@ -3,9 +3,9 @@ title: "Reproducible and programmatic generation of neuroimaging visualisations"
 author: "Sidhant Chopra & [coauthors]"
 date: "09/03/2022"
 output:
-  html_document: default
   word_document: default
   pdf_document: default
+  html_document: default
 editor_options:
   markdown:
     wrap: 72
@@ -28,7 +28,7 @@ manually changed until the desired output is reached. While the choice
 to use GUI-based software's has been driven by a perception of
 convenience, flexibility and accessibility, there are now many
 code-based software packages which are well-documented and don't often
-require high-level knowledge of the programming. These tools are
+require high-level knowledge of programming. These tools are
 flexible and allow for generation of reproducible, high-quality and
 publication ready brain visualisations in only a few lines of code
 (Figure 1), especially within the R, Python and Matlab environments.
@@ -116,14 +116,14 @@ each data processing or analysis step accessible and achievable.
 ### Integrative and Interactive reporting
 
 Often programming languages such as R, Python and Matlab are used for
-the analysis in neuroimaging studuies, but the brain visualisation
+the analysis in neuroimaging studies, but the brain visualisation
 resulting from these analyses is outsourced to a septate GIU-based
 visualisation tools such as FSLeyes, Freeview or ITK-snap. Switching
 from analysis to a GUI-based visualisation process be a cumbersome
 deviation from the scientific workflow and can make debugging errors
 more difficult, as you have to regularly switch program to visually
 examine the results of any modifications to analyses. Using the brain
-visulitsation ools that already exist within your chosen programming
+visualisation tools that already exist within your chosen programming
 environment can provide instant visual feedback on the impact of
 modifications to processing or analyses. While some GUI-based tools do
 offer command-line access to generate visualisations, they can lack
@@ -142,7 +142,7 @@ re-running of code using cloud services (cite).
 
 Neuroimaging data are often spatially 3D and can have multiple time
 points, adding a 4th dimensional (e.g. fMRI data). Thus, communicating
-findings or evaluating quality using using static 2D slices is
+findings or evaluating quality using static 2D slices is
 challenging. While well-curated 3D renderings can help with spatial
 localisation (cite madan), in the end, static images can only provide an
 incomplete representation of the data. A added advantage of some of
