@@ -41,7 +41,7 @@ readers. Second, code-based software provide more precise controls over
 visualisation settings, while also benefiting from advantages of
 programming, such as being able to iteratively generate multiple
 figures. Finally, being able to integrate figure generation into your
-analysis scripts reduces changes of errors, with more advanced tools now
+analysis scripts reduces chances of errors, with more advanced tools now
 allowing for seamless weaving together of prose and code. Here, we
 review the advantages of learning and using programmatic neuroimaging
 visualisations, focusing on benefits to replicability, flexibility and
