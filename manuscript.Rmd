@@ -1,10 +1,10 @@
 ---
 title: "Reproducible and programmatic generation of neuroimaging visualisations"
-author: "Sidhant Chopra & [coauthors]"
+author: "Sidhant Chopra, Löic Labache, Winnie Orchard, [...]"
 date: "09/03/2022"
 output:
-  word_document: default
   pdf_document: default
+  word_document: default
   html_document: default
 editor_options:
   markdown:
@@ -28,10 +28,10 @@ manually changed until the desired output is reached. While the choice
 to use GUI-based software's has been driven by a perception of
 convenience, flexibility and accessibility, there are now many
 code-based software packages which are well-documented and don't often
-require high-level knowledge of programming. These tools are
-flexible and allow for generation of reproducible, high-quality and
-publication ready brain visualisations in only a few lines of code
-(Figure 1), especially within the R, Python and Matlab environments.
+require high-level knowledge of programming. These tools are flexible
+and allow for generation of reproducible, high-quality and publication
+ready brain visualisations in only a few lines of code (Figure 1),
+especially within the R, Python and Matlab environments.
 
 This article will cover three major advantages of using code-generated
 visualisations over GUI based tools: replicability, flexibility and
@@ -142,17 +142,17 @@ re-running of code using cloud services (cite).
 
 Neuroimaging data are often spatially 3D and can have multiple time
 points, adding a 4th dimensional (e.g. fMRI data). Thus, communicating
-findings or evaluating quality using static 2D slices is
-challenging. While well-curated 3D renderings can help with spatial
-localisation (cite madan), in the end, static images can only provide an
-incomplete representation of the data. A added advantage of some of
-code-based tools is that you can generate 'rich' media like interactive
-figures or animations, which can improve scientific communication of
-findings. Many code-based software tools now allow for the generation of
-animated brain visualisations (cite blog) or interactive widgets which
-allow users to zoom, rotate and scroll through slices. Linking to or
-even embedding these videos or interactive figures in papers can greatly
-enhance the communication of findings.
+findings or evaluating quality using static 2D slices is challenging.
+While well-curated 3D renderings can help with spatial localisation
+(cite madan), in the end, static images can only provide an incomplete
+representation of the data. A added advantage of some of code-based
+tools is that you can generate 'rich' media like interactive figures or
+animations, which can improve scientific communication of findings. Many
+code-based software tools now allow for the generation of animated brain
+visualisations (cite blog) or interactive widgets which allow users to
+zoom, rotate and scroll through slices. Linking to or even embedding
+these videos or interactive figures in papers can greatly enhance the
+communication of findings.
 
 ### Examples of neuroimaging visualisation packages available in R
 
@@ -163,10 +163,12 @@ and visualisation of voxel-level imaging data of either *nifti*,
 *analyze* or *afni* formats. In particular, the `image`, `slice` and
 `orthographic` functions allow users to display the desired number of
 slices in the desired orientations, while also providing precise control
-over overlaied images, colour scales, legend placement and other
+over overlaid images, colour scales, legend placement and other
 aesthetic settings (Fig 1A). Smoothing and re-sampling of images is
 sometimes required for visualisation purposes, which can be achieved via
-the *`ANTsR`* /`extrantsr` or `fslr` packages.
+the *`ANTsR`* /`extrantsr` or `fslr` packages. 
+
+[view_xifti_volume(xii, interactive = TRUE) in cifti tools]
 
 ##### *Vertex-level visualisations.*
 
@@ -183,13 +185,14 @@ of the cortex with voxel-level data fo the cerebellum and sub-cortex. In
 R, CIFTI data can now be read, visualised and manipulated using the
 well-documented `ciftiTools` package (Fig 1C; cite).
 
+
 ##### *ROI-level visualisations.*
 
 Statistical parameters can be mapped onto discreet cortical and
-subcortical regions using the `ggseg` and `ggseg3d` package. These
+sub-cortical regions using the `ggseg` and `ggseg3d` package. These
 packages flexibly generates aesthetic renderings of cortical,
-subcortical and white matter ROIs in 2D and 3D (Fig 1D). Usually,
-ROI-level interpretations are dependent on a standerdised atlas or
+sub-cortical and white matter ROIs in 2D and 3D (Fig 1D). Usually,
+ROI-level interpretations are dependent on a standardised atlas or
 parcellation schemes the brain, accordingly this package and its add-ons
 (`ggExtra`) provides a large array of commonly used atlases and some
 functionality for users to contribute other atlases. Additionally, being
@@ -197,7 +200,7 @@ part of the 'Grammar of Graphics' frame work allows for integration with
 packages such as `gganimate`, enabling users to animate and visualise
 dynamic changes in spatial and temporal statistics across ROIs. The
 `ciftiTools` package also allows for surface and voxel-level
-visualisation of ROIs for the cortex and subcortex respectively (Fig
+visualisation of ROIs for the cortex and sub-cortex respectively (Fig
 1E). Flexibly allowing CIFTI format atlases and ROIs to be displayed.
 
 ##### Edge-level visualisations.
@@ -215,41 +218,91 @@ functionality for users to enter their own atlas schemes.
 ### Limitations and functionality gaps in R packages for brain visualisation
 
 -   While most of these tools do not require a strond knowledge of
-    programming, there can still be a steeper learning curve when
-    compared to GUI-based tools.
+programming, there can still be a steeper learning curve when
+compared to GUI-based tools.
 
 -   For quick and interactive viewing of single images, sometimes GUI
-    tools can be faster (although, fsleyes can be called from python and
-    R environments with ease)
+tools can be faster (although, fsleyes can be called from python and
+R environments with ease)
 
 -   Visualising data-types such as streamlines from DWI-based
-    tractography are still not well represented in code-based tools.
+tractography are still not well represented in code-based tools.
 
-    -   But fsbrain has a function;
-        <https://github.com/dfsp-spirit/fsbrain/blob/cb1b9d667a9449b214b20f6420038af2541e48b4/R/vis_dti_tracks.R>)
+-   But fsbrain has a function;
+<https://github.com/dfsp-spirit/fsbrain/blob/cb1b9d667a9449b214b20f6420038af2541e48b4/R/vis_dti_tracks.R>)
 
 -   For tools which require non-standard or uncommon atlases or ROIs.
 
-    -   Although, with `ciftitools`, this becomes easier, as long as
-        atlas follows the CIFTI convention.
+-   Although, with `ciftitools`, this becomes easier, as long as
+atlas follows the CIFTI convention.
 
 -   3D renderings of non-standard ROIs like unique subcortical schemes
-    or brain stem are still difficult to do.
+or brain stem are still difficult to do.
 
-    -   Have to use complex tools like pyVista
+-   Have to use complex tools like pyVista
 
 ### Figure 1
 
--   The below figures will be combined into a multi-panel figure with
-    the corresponding code underneath.
+```{r Figure1 }
+library(patchwork)
+library(ggplot2)
 
-```{r}
+fig1a <- ggplot() + annotation_custom(grid::rasterGrob(png::readPNG("data/fig1a.png"),
+                                                       width=ggplot2::unit(1,"npc"),
+                                                       height=ggplot2::unit(1,"npc")))
+
+fig1b <- ggplot() + annotation_custom(grid::rasterGrob(png::readPNG("data/fig1b.png"),
+                                                       width=ggplot2::unit(1,"npc"),
+                                                       height=ggplot2::unit(1,"npc")))
+
+fig1c <- ggplot() + annotation_custom(grid::rasterGrob(png::readPNG("data/fig1c.png"),
+                                                       width=ggplot2::unit(1,"npc"),
+                                                       height=ggplot2::unit(1,"npc")))
+
+fig1d <- ggplot() + annotation_custom(grid::rasterGrob(png::readPNG("data/fig1d.png"),
+                                                       width=ggplot2::unit(1,"npc"),
+                                                       height=ggplot2::unit(1,"npc")))
+
+fig1e <- ggplot() + annotation_custom(grid::rasterGrob(png::readPNG("data/fig1e.png"),
+                                                       width=ggplot2::unit(1,"npc"),
+                                                       height=ggplot2::unit(1,"npc")))
+
+
+fig1f <- ggplot() + annotation_custom(grid::rasterGrob(png::readPNG("data/fig1f.png"),
+                                                       width=ggplot2::unit(1,"npc"),
+                                                       height=ggplot2::unit(1,"npc")))
+
+fig1g1 <- ggplot() + annotation_custom(grid::rasterGrob(png::readPNG("data/fig1g1.png"),
+                                                        width=ggplot2::unit(1,"npc"),
+                                                        height=ggplot2::unit(1,"npc")))
+fig1g2 <- ggplot() + annotation_custom(grid::rasterGrob(png::readPNG("data/fig1g2.png"),
+                                                        width=ggplot2::unit(1,"npc"),
+                                                        height=ggplot2::unit(1,"npc")))
+
+fig1h <- ggplot() + annotation_custom(grid::rasterGrob(png::readPNG("data/fig1h.png"),
+                                                       width=ggplot2::unit(1,"npc"),
+                                                       height=ggplot2::unit(1,"npc")))
+
+fig1i <- ggplot() + annotation_custom(grid::rasterGrob(png::readPNG("data/fig1i.png"),
+                                                       width=ggplot2::unit(1,"npc"),
+                                                       height=ggplot2::unit(1,"npc")))
+
+patchwork <- fig1a/fig1b|(fig1c|fig1f)/fig1d|(fig1e|fig1g2)/fig1g1|fig1h/fig1i 
+
+patchwork + plot_annotation(tag_levels = 'A',
+                            title = 'Examples of brain visualisations in R') 
+
+
+```
+
+```{r Fig1a, eval=FALSE}
 #Figure 1A
 #voxel 1
 
 # ADD COMMENTS TO EXPLAIN EACH LINE
 
 library(neurobase)
+library(ggplotify)
 
 template <- readnii('data/MNI152_T1_1mm_brain.nii.gz') #load the nifti file into R
 
@@ -259,51 +312,58 @@ effect <- readnii("data/MNI152_effect_size.nii.gz")
 effect[effect<0.3] <- NA 
 
 #Plot the effect on the brain template
+breaks = seq(.3,.6, by=0.005)
+
+png("data/fig1a.png") 
 ortho2(x = template, 
        y = effect, 
        crosshairs = F, 
        bg = "white", 
        NA.x = T, 
-       col.y  = hotmetal(), 
+       col.y= hotmetal(), 
        xyz = c(70,50,80),
        useRaster = T,
-       ybreaks = seq(0.3, 1, length.out = 65), 
        ycolorbar = TRUE, 
-       mfrow = c(1,3))
-
+       mfrow = c(1,3)) +
+  colorbar(breaks,col = hotmetal(n=length(breaks)-1), 
+           text.col = "black", labels = TRUE, maxleft = 0.95) + 
+  title(main = "Voxel Statistic Map")
+dev.off()
 
 ```
 
-```{r}
+```{r Fig1b, eval=FALSE }
 #Figure 1B
 #voxel 2
 
 library(neurobase)
-
 library(scales)
 
 dti <- readnii('data/sub-001__t1_warped.nii.gz') #load the nifti file into R
 
 atlas <-  readnii('data/sub-001_schaefer300n7_aseg_to_dwispace_gm_rois.nii.gz')
 
-
+png('data/fig1b.png')
 overlay(x=robust_window(dti), y=atlas, 
-               plot.type = "single", 
-               z=c(seq(25,110,5)), 
-               col.y =  alpha(rainbow(300), 0.3),
-               plane = "axial",  
-               useRaster = T, 
-               bg = "white",NA.x=T, 
-               zlim.y =c(1,300))
+        plot.type = "single", 
+        z=c(seq(30,110,10)), 
+        col.y =  alpha(rainbow(300), 0.3),
+        plane = "axial",  
+        useRaster = T, 
+        bg = "white",
+        NA.x=T, 
+        zlim.y =c(1,300), 
+        mar = c(0.1, 0.1, 1.5, 0.1)) + #marget of bottom, left, top, right borders
+  title("Voxel Atlas Overlay", line = 1.3)
+dev.off()
 
 ```
 
-```{r, fig.cap="Snapshot", rgl=TRUE, format="png", eval=TRUE}
+```{r Fig1c , eval=FALSE}
 #vertex 1
 #Figure 1B
-
 library(rgl)
-
+library(ggplot2)
 # Load the package and point to the Connectome Workbench
 suppressPackageStartupMessages(library(ciftiTools))
 
@@ -318,76 +378,98 @@ cii <- read_cifti(
   cifti_fname, brainstructures="left", 
   surfL_fname=surfL_fname)
 
+
 view_xifti_surface(cii, 
                    hemisphere = "left", 
-                   view = "lateral", 
+                   view = "both", 
                    idx = 1,
                    colors = viridis::viridis(n = 100),
-                   zlim = c(1,1.5), legend_embed = T)
+                   zlim = c(1,1.5),  
+                   legend_embed = T,
+                   title = "Vertex Statistic Map", 
+                   cex.title = 2)
+
+rgl.snapshot("data/fig1c.png")
+rgl.close()
 
 ```
 
-```{r, fig.cap="Snapshot", rgl=TRUE, format="png", eval=TRUE}
+```{r Fig1d , eval=FALSE}
 #Vertex 2
 #Figure 1X - Remove white space
 
-library("fsbrain")
+library(fsbrain)
 
-subjects_dir = fsbrain::get_optional_data_filepath("subjects_dir")
+#download_optional_data()
+subjects_dir = get_optional_data_filepath("subjects_dir")
 
 subject_id = 'subject1' 
 
 colourmap = colorRampPalette(viridis::viridis(n = 100))
 
+
 vis.subject.morph.native(subjects_dir = subjects_dir, 
                          subject_id = 'subject1', 
                          measure = 'thickness', 
                          hemi='both', 
-                         views="t4",
+                         views = 't4',
                          draw_colorbar = "horizontal",
-                         cortex_only = T, surface = "white",
+                         cortex_only = T, surface = "white", 
                          makecmap_options = list('colFn'=colourmap))
-
+rgl.snapshot("data/fig1d.png")
+rgl.close()
 
 
 ```
 
-```{r, fig.cap="Snapshot", rgl=TRUE, format="png", eval=TRUE, fig.show='hold'}
+```{r Fig1e , eval=FALSE}
 #ROI1 
-#Figure 1X - Remove white space
-
+#Figure 1e 
+suppressPackageStartupMessages(library(ciftiTools))
 parc <- load_parc("Yeo_7")
-plot1 <- view_xifti_surface(parc,  
-                           legend_embed = T,
-                           hemisphere = "right")
+view_xifti_surface(parc,  
+                   legend_embed = T,
+                   hemisphere = "right")
+
+rgl.snapshot("data/fig1e.png")
+
+rgl.close()
+
 ```
 
-```{r, fig.cap="Snapshot", rgl=TRUE, format="png", eval=TRUE, fig.show='hold'}
+```{r Fig1f , eval=FALSE}
 #ROI1 
 #Figure 1X - combine with previous figure
 
 set.seed(1993) #set a random seed (good practice for reproducibility)
 
 parc <- load_parc("Schaefer_400")
+
 ramdom_metric <- rnorm(400)
+
 cii <- move_from_mwall(cii, NA)
 
 parc_vec <- c(as.matrix(parc))
+
 xii_metric <- c(NA, ramdom_metric)[parc_vec + 1]
 
 xii1 <- select_xifti(cii, 1)
+
 xii_metric <- newdata_xifti(xii1, xii_metric)
 
 plot2 <- view_xifti_surface(xii_metric, 
-     colors = viridis::viridis(n = 400), 
-     borders = "black", 
-     hemisphere = "left", )
+                            colors = viridis::viridis(n = 400), 
+                            borders = "black", 
+                            hemisphere = "left", )
 
+rgl.snapshot("data/fig1f.png")
+
+rgl.close()
 
 
 ```
 
-```{r}
+```{r Fig1g, eval=FALSE}
 #ROI2
 
 #devtools::install_github("LCBC-UiO/ggsegGlasser")
@@ -407,12 +489,13 @@ Effect <- rnorm(dim(base_atlas)[1]) #generate a random numbers for each roi in t
 base_atlas <- cbind(Effect, base_atlas)
 
 cortex <- ggseg(atlas = glasser,
-      .data = base_atlas,
-      mapping=aes(fill=Effect), 
-      position="stacked",
-      colour="black",
-      size=.2,
-      show.legend = F) + scale_fill_viridis_b()
+                .data = base_atlas,
+                mapping=aes(fill=Effect), 
+                position="stacked",
+                colour="black",
+                size=.2,
+                show.legend = F,
+                plot.background = "white") + scale_fill_viridis_b()
 
 sub_base_atlas <- as.data.frame(na.omit(cbind(aseg$data$region, aseg$data$hemi)))
 
@@ -423,19 +506,25 @@ Effect <- rnorm(dim(sub_base_atlas)[1])
 sub_base_atlas <- cbind(Effect, sub_base_atlas)
 
 subcortex <- ggseg(atlas = aseg,
-      .data = sub_base_atlas,
-      hemisphere = "right",
-      mapping=aes(fill=Effect), 
-      position="stacked",
-      colour="black",
-      size=.2,
-      show.legend = T) + 
+                   .data = sub_base_atlas,
+                   hemisphere = "right",
+                   mapping=aes(fill=Effect), 
+                   position="stacked",
+                   colour="black",
+                   size=.2,
+                   show.legend = T, 
+                   plot.background = "white") + 
   scale_fill_viridis_b() 
 
-cowplot::plot_grid(cortex, subcortex, nrow = 1, rel_widths = c(1,.7))
+#fig1g <- cowplot::plot_grid(cortex, subcortex, nrow = 1, rel_widths = c(1,.7))
+
+ggsave(filename = 'data/fig1g1.png', plot = cortex, device = 'png', bg = 'white')
+ggsave(filename = 'data/fig1g2.png', plot = subcortex, device = 'png', bg = 'white')
+
 
 ```
-```{r}
+
+```{r Fig1h , eval = F}
 #Edge (also add 3d version)
 #Fig1X
 
@@ -444,13 +533,22 @@ library(brainconn)
 
 conmat <- example_weighted_undirected
 degree <- rowSums(conmat)[which(rowSums(conmat)!=0)]
-brainconn(atlas ="schaefer300_n7", 
-          conmat=conmat, 
-          node.size = degree/2,
-          view="ortho", 
-          edge.color.weighted = T,
-          background.alpha = 0.4, 
-          show.legend = F,
-          edge.color = scale_edge_colour_gradient2(low='yellow', mid='orange', high='red')) 
+fig1h <- brainconn(atlas ="schaefer300_n7", 
+                   conmat=conmat, 
+                   node.size = degree/2,
+                   view="ortho", 
+                   edge.color.weighted = T,
+                   background.alpha = 0.4, 
+                   show.legend = F,
+                   edge.color = scale_edge_colour_gradient2(low='yellow', mid='orange', high='red')) 
+ggsave(filename = 'data/fig1h.png', plot = fig1h, device = 'png', bg = 'white')
+
+
+brainconn3D(atlas ="schaefer300_n7", 
+            conmat=conmat,
+            show.legend = F)
 
 ```
+
+
+
