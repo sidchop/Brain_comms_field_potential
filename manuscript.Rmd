@@ -4,8 +4,8 @@ author: "Sidhant Chopra, Löic Labache, Winnie Orchard, [...]"
 date: "09/03/2022"
 output:
   word_document: default
-  html_document: default
   pdf_document: default
+  html_document: default
 editor_options:
   markdown:
     wrap: 72
@@ -170,20 +170,6 @@ report. Some journals that publish neuroimaging studies are moving
 towards allowing reproducible manuscripts, including reproducible
 figures (cite e-life,f1000,plos), with some even allowing on-demand
 re-running of code using cloud services (cite).
-
-Neuroimaging data are often spatially 3D and can have multiple time
-points, adding a 4th dimension (e.g. fMRI data). Thus, communicating
-findings or evaluating quality using static 2D slices is challenging.
-While well curated 3D renderings can help with spatial localisation
-(cite madan), in the end, static 2D images can only provide an
-incomplete representation of 3D or 4D data. A added advantage of some of
-code-based tools is that you can generate 'rich' media like interactive
-figures or animations, which can improve scientific communication of
-findings. Many code-based software tools now allow for the generation of
-animated brain visualisations (cite blog) or interactive widgets which
-allow users to zoom, rotate and scroll through slices. Linking to or
-even embedding these videos or interactive figures in papers can greatly
-enhance the communication of findings.
 
 Neuroimaging data are often spatially 3D and can have multiple time
 points, adding a 4th dimension (e.g. fMRI data). Thus, communicating
