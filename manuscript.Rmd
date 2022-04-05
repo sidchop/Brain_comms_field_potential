@@ -195,20 +195,21 @@ communication of your research with peers and a reach larger audiences.
 
 The following four sections provide brief examples packages and
 functions available in R for visualising voxel, vertex, ROI and
-edge-level data. A more didactic introduction to these tools is provided
-in a [collection of beginner friendly
-R-Notebooks](https://github.com/sidchop/neuRo-vis-BrainHack-2021).
+edge-level data. A didactic introduction to these tools is provided in a
+accompaning [collection of beginner friendly
+R-Notebooks](ttps://github.com/sidchop/neuRo-vis-BrainHack-2021).
 
+```{=tex}
 \newpage
 \blandscape
-
+```
 ### Figure 1 [Fix image size ratios]
 
 ```{r Figure1 , echo=FALSE, out.height = '80%', out.width = '140%'}
 library(patchwork)
 library(ggplot2)
 
-#loop this?
+
 fig_name <- c('fig1a', 'fig1b', 'fig1c', 'fig1d', 'fig1e', 'fig1f', 'fig1g1', 'fig1g2', 'fig1g3','fig1h', 'fig1i')
 figs <- list()
 
@@ -218,7 +219,9 @@ for (f in 1:length(fig_name)) {
                                                              height=ggplot2::unit(1,"npc")))
 }
 
-patchwork <- figs[[1]]/figs[[2]]|(figs[[3]]|figs[[6]])/figs[[4]]|(figs[[5]]|(figs[[8]]/figs[[9]]))/figs[[7]]|figs[[10]]/figs[[11]] 
+patchwork <- figs[[1]]/(figs[[2]]|figs[[3]])|(figs[[6]]/(figs[[8]]|figs[[9]]))/figs[[4]]|figs[[10]]/figs[[11]] 
+
+
 
 #& theme(text = element_text('Times New Roman'))
 
@@ -242,24 +245,24 @@ or afni formats. In particular, the `image`, `slice` and `orthographic`
 functions allow users to display the desired number of slices in the
 desired orientations, while also providing precise control over overlaid
 images, colour scales, legend placement and other aesthetic settings
-(Fig 1A). Smoothing and re-sampling of images is sometimes required for
-visualisation purposes, which can be achieved via the `ANTsR`
+(Fig 1A-B). Smoothing and re-sampling of images is sometimes required
+for visualisation purposes, which can be achieved via the `ANTsR`
 /`extrantsr` or `fslr` packages.
 
 ##### Vertex-level visualisations.
 
 The recently developed `fsbrain` package allows for the visualisation of
-vertex-level and atlas-level data obtained using Freesurfer. It contains
-many flexible functions for visualising individual-level and group-level
-measures such as cortical thickness, volume or surface area (Fig 1B).
-The package also comes with extensive guides and documentations to
-assist users (cite).
+vertex-level and atlas-level data which is derieved using FreeSurfer
+formats. It contains many flexible functions for visualising
+individual-level and group-level measures such as cortical thickness,
+volume or surface area (Fig 1E). The package also comes with extensive
+guides and documentations to assist users (cite).
 
 CIFTI or 'grey-ordinate' data is becoming a popular format for
 structural and functional imaging data, as it combines vertex-level data
-of the cortex with voxel-level data fo the cerebellum and sub-cortex. In
-R, CIFTI data can now be read, visualised and manipulated using the
-well-documented `ciftiTools` package (Fig 1C; cite).
+of the cortex with voxel-level data for the cerebellum and sub-cortex.
+In R, CIFTI data can now be read, visualised and manipulated using the
+well-documented `ciftiTools` package (Fig 1C-D,F; cite).
 
 ##### ROI-level visualisations.
 
@@ -273,8 +276,9 @@ parcellation schemes the brain, accordingly this package and its add-ons
 functionality for users to contribute other atlases. Additionally, being
 part of the 'Grammar of Graphics' frame work allows for integration with
 packages such as `gganimate`, enabling users to animate and visualise
-dynamic changes in spatial and temporal statistics across ROIs. The
-`ciftiTools` package also allows for surface and voxel-level
+dynamic changes in spatial and temporal statistics across ROIs.
+
+The `ciftiTools` package also allows for surface and voxel-level
 visualisation of ROIs for the cortex and sub-cortex respectively (Fig
 1E). Flexibly allowing CIFTI format atlases and ROIs to be displayed.
 
@@ -303,10 +307,13 @@ functionality for users to enter their own atlas schemes.
 -   Visualising data-types such as streamlines from DWI-based
     tractography are still not well represented in code-based tools.
 
--   Lack of user friendly tools which can render non-standard or uncommon atlases or ROIs. Although, with `ciftitools`, this becomes easier, as long as atlas follows the CIFTI convention.
+-   Lack of user friendly tools which can render non-standard or
+    uncommon atlases or ROIs. Although, with `ciftitools`, this becomes
+    easier, as long as atlas follows the CIFTI convention.
 
 -   3D renderings of non-standard ROIs like unique subcortical schemes
-    or brain stem are still difficult to do. Can to use complex workarounds like ITKsnap + pyVista.
+    or brain stem are still difficult to do. Can to use complex
+    workarounds like ITKsnap + pyVista.
 
 ### Supplement (Code used to generate figure)
 
@@ -315,7 +322,6 @@ functionality for users to enter their own atlas schemes.
 #voxel 1
 
 # ADD COMMENTS TO EXPLAIN EACH LINE
-
 library(neurobase)
 library(ggplotify)
 
@@ -335,12 +341,12 @@ ortho2(x = template,
        crosshairs = F, 
        bg = "white", 
        NA.x = T, 
-       col.y= hotmetal(), 
+       col.y= viridis::viridis(n = 500), 
        xyz = c(70,50,80),
        useRaster = T,
        ycolorbar = TRUE, 
        mfrow = c(1,3)) +
-  colorbar(breaks,col = hotmetal(n=length(breaks)-1), 
+  colorbar(breaks,col =viridis::viridis(n=length(breaks)-1), 
            text.col = "black", labels = TRUE, maxleft = 0.95) 
 dev.off()
 
@@ -379,7 +385,7 @@ dev.off()
 library(rgl)
 library(ggplot2)
 # Load the package and point to the Connectome Workbench
-suppressPackageStartupMessages(library(ciftiTools))
+library(ciftiTools)
 
 ciftiTools.setOption("wb_path", "/Applications/workbench/")
 
@@ -387,10 +393,12 @@ ciftiTools.setOption("wb_path", "/Applications/workbench/")
 
 cifti_fname <- ciftiTools::ciftiTools.files()$cifti["dtseries"]
 surfL_fname <- ciftiTools.files()$surf["left"]
+surfR_fname <- ciftiTools.files()$surf["right"]
 
 cii <- read_cifti(
-  cifti_fname, brainstructures="left", 
-  surfL_fname=surfL_fname)
+  cifti_fname, brainstructures="all", 
+  surfL_fname=surfL_fname,
+  surfR_fname=surfR_fname)
 
 
 view_xifti_surface(cii, 
@@ -411,26 +419,28 @@ rgl.close()
 #Vertex 2
 #Figure 1X - Remove white space
 
-#weird angle 
 
 library(fsbrain)
 
 #download_optional_data()
-subjects_dir = get_optional_data_filepath("subjects_dir")
+#download_fsaverage(accept_freesurfer_license = TRUE)
 
-subject_id = 'subject1' 
+subjects_dir <- get_optional_data_filepath("subjects_dir")
 
-colourmap = colorRampPalette(viridis::viridis(n = 100))
+subject_id <- 'subject1' 
+
+colourmap <- colorRampPalette(viridis::viridis(n = 10000))
+fsbrain.set.default.figsize(700, 700);
+
+cm = vis.subject.morph.standard(subjects_dir, 
+                                subject_id, 'sulc', 
+                                fwhm='10', 
+                                cortex_only = T, 
+                                views=NULL, 
+                                makecmap_options = list('colFn'=colourmap))
+img = export(cm, colorbar_legend='Effect', output_img = "data/fig1d.png")
 
 
-vis.subject.morph.native(subjects_dir = subjects_dir, 
-                         subject_id = 'subject1', 
-                         measure = 'thickness', 
-                         hemi='both', 
-                         views = 't9',
-                         draw_colorbar = "horizontal",
-                         cortex_only = T, surface = "white", 
-                         makecmap_options = list('colFn'=colourmap))
 rgl.snapshot("data/fig1d.png")
 rgl.close()
 
@@ -475,7 +485,8 @@ xii_metric <- newdata_xifti(xii1, xii_metric)
 plot2 <- view_xifti_surface(xii_metric, 
                             colors = viridis::viridis(n = 400), 
                             borders = "black", 
-                            hemisphere = "left", )
+                            hemisphere = "both",
+                            view = 'lateral')
 
 rgl.snapshot("data/fig1f.png")
 
@@ -522,10 +533,10 @@ sub_base_atlas <- cbind(Effect, sub_base_atlas)
 
 subcortex <- ggseg(atlas = aseg,
                    .data = sub_base_atlas,
-                   hemisphere = "right",
                    mapping=aes(fill=Effect), 
-                   position="stacked",
+                   position = "dispersed",
                    colour="black",
+                   hemi =c('left', 'right'),
                    size=.2,
                    show.legend = T, 
                    plot.background = "white") + 
@@ -597,9 +608,8 @@ make_ggseg3d <- function(attribute,
 set.seed(1993)
 volume <- sample(1:20, 14) #randomly generated data for 14 structures
 make_ggseg3d(volume, 
-             colour.pal = c("white", "firebrick"), 
-             output.png = T, file.name = 
-               "data/fig1g3.png")
+             colour.pal = viridis::viridis(n=length(volume)), 
+             output.png = T, file.name = "data/fig1g3.png")
 
 
 
