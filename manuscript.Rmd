@@ -4,8 +4,8 @@ author: "Sidhant Chopra, Löic Labache, Winnie Orchard, [...]"
 date: "09/03/2022"
 output:
   word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
 editor_options:
   markdown:
     wrap: 72
