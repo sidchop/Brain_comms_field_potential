@@ -116,7 +116,7 @@ schemes, legend placement and camera angles, can provide you with much
 greater flexibility over visualisations. Nonetheless, part of the appeal
 of GUI-based tools is that the pre-sets for such settings can provide a
 useful starting point and reduce the decision burden on the user.
-However, similar pre-sets are often available in the from of default
+However, similar pre-sets are often available in the form of default
 settings in most code-based packages, negating the need for the user to
 manually enter each and every choice of setting required for making the
 image. Most code-based tools also come with detialed documentation, or
