@@ -8,28 +8,30 @@ authors:
     location: CT, USA, 06511
     email: sidhant.chopra@yale.com
   - name: Loïc Labache
-    department: School of Psychology
-    affiliation: Department of Psychology
+    department: Department of Psychology
+    affiliation: Yale University
     location: CT, USA, 06511
   - name: Edwina R Orchard
-    department: School of Psychology
-    affiliation: Department of Psychology
+    department: Department of Psychology
+    affiliation: Yale University
     location: CT, USA, 06511
   - name: Avram Holmes
-    department: School of Psychology
-    affiliation: Department of Psychology
+    department: Department of Psychology
+    affiliation: Yale University
     location: CT, USA, 06511
-abstract: Add words here. 
 keywords:
-  - Brain Visualization
-  - MRI Visualization
+  - Neuroimaging visualization
+  - Reproducibility 
+  - Programmatic figures
+  - Open Science
+  - R
 output: 
+  bookdown::word_document2:
+    toc: false
   bookdown::pdf_book:
     base_format: rticles::arxiv_article
     keep_tex: true
-    latex_engine: xelatex
-  bookdown::word_document2:
-    toc: false
+    latex_engine: lualatex
 linestretch: 2
 header-includes:
 - \usepackage{pdflscape}
@@ -70,43 +72,107 @@ Often programming languages such as R, Python and MATLAB are used for the analys
 
 Increasingly popular software such as *R Markdown*, *Quarto* and *Jupyter Notebook* allow for the mixing of prose and code in a single script, resulting in fully reproducible and publication ready papers. By using code-based tools available within your preferred environment, brain visualizations can be directly integrated and embedded within a paper or report. For instance, a fully reproducible version of the current paper can be found on [GitHub](https://github.com/sidchop/Brain_comms_field_potential). Some journals that publish neuroimaging studies are moving towards allowing reproducible manuscripts, including reproducible figures (e.g. *e-Life*, *Aperture Neuro*), with other journals like *F1000Research* and *GigaScience* even allowing on-demand re-running of code computational environment linked to the associated article using 'compute capsules' from the cloud-based platform Code Ocean (Code Ocean, 2021),
 
-Neuroimaging data are often spatially 3D and can have multiple time points, adding a 4th dimension (e.g., fMRI data). Thus, communicating findings or evaluating quality using static 2D slices is challenging, and may not be the best representation of the data, or the interpretations. While well-curated 3D renderings can help with spatial localisation (see Madan, 2015; Pernet & Madan, 2019), in the end, static images can only provide an incomplete representation of the data, and forces researchers to choose the "best" angle or slice to show, which often involves compromising one result to emphasize another. An added advantage of some of the code-based tools is that you can generate 'rich' media like interactive widgets -- figures or animations, which allow users to zoom, rotate and scroll through slices. Interacting with a figure in this way can improve scientific communication of findings. Linking to or even embedding these videos or interactive figures in papers can greatly enhance the communication of findings and make your paper more engaging for the reader. Such rich brain visualizations lend themselves to being embedded or shared on science communication mediums other than academic papers - such as presentations, websites and social media - all of which can promote the communication of your research with peers and a reach larger audiences (Li and Xie, 2020). This last point is becoming increasingly salient as marketing science on social media has become a core medium for spreading discoveries, science communication to the public, and even a primary avenue for employment opportunities for early-career researchers (Baker, 2015; Lee, 2019). Overall, public engagement is one of the cornerstones of science, and the images we create are at the center of the process.\
+Neuroimaging data are often spatially 3D and can have multiple time points, adding a 4th dimension (e.g., fMRI data). Thus, communicating findings or evaluating quality using static 2D slices is challenging, and may not be the best representation of the data, or the interpretations. While well-curated 3D renderings can help with spatial localisation (see Madan, 2015; Pernet & Madan, 2019), in the end, static images can only provide an incomplete representation of the data, and forces researchers to choose the "best" angle or slice to show, which often involves compromising one result to emphasize another. An added advantage of some of the code-based tools is that you can generate 'rich' media like interactive widgets -- figures or animations, which allow users to zoom, rotate and scroll through slices. Interacting with a figure in this way can improve scientific communication of findings. Linking to or even embedding these videos or interactive figures in papers can greatly enhance the communication of findings and make your paper more engaging for the reader. Such rich brain visualizations lend themselves to being embedded or shared on science communication mediums other than academic papers - such as presentations, websites and social media - all of which can promote the communication of your research with peers and a reach larger audiences (Li and Xie, 2020). This last point is becoming increasingly salient as marketing science on social media has become a core medium for spreading discoveries, science communication to the public, and even a primary avenue for employment opportunities for early-career researchers (Baker, 2015; Lee, 2019). Overall, public engagement is one of the cornerstones of science, and the images we create are at the center of the process.
 
-|                                 | Voxel | Vertex | ROI | Edge | Streamlines |
-|:--------------------------------|:-----:|:------:|:---:|:----:|:-----------:|
-| R                               |       |        |     |      |             |
-| ciftitools                      |   ✓   |   ✓    | ✓\* |      |             |
-| fsbrain                         |   ✓   |   ✓    | ✓\* |      |             |
-| oro.nifti                       |   ✓   |        |     |      |             |
-| neurobase                       |   ✓   |        |     |      |             |
-| ggseg                           |       |        |  ✓  |      |             |
-| brainconn                       |       |        |     |  ✓   |             |
-| Python                          |       |        |     |      |             |
-| surfice                         |   ✓   |   ✓    |  ✓  |  ✓   |      ✓      |
-| nilearn                         |   ✓   |   ✓    |  ✓  |  ✓   |             |
-| Visbrain                        |   ✓   |   ✓    |  ✓  |  ✓   |             |
-| Pycortex                        |   ✓   |   ✓    | ✓\* |      |             |
-| pySurfer                        |       |   ✓    | ✓\* |      |             |
-| Brainspace/surfplot             |       |   ✓    | ✓\* |      |             |
-| netneurotools                   |       |   ✓    | ✓\* |      |             |
-| Brainplotlib                    |       |   ✓    | ✓\* |      |             |
-| DIPY                            |   ✓   |        |     |      |      ✓      |
-| mrivis                          |   ✓   |        |     |      |             |
-| ENIGMA toolbox                  |       |        |  ✓  |      |             |
-| ggseg                           |       |        |  ✓  |      |             |
-| graphpype                       |       |        |     |  ✓   |             |
-| MATLAB                          |       |        |     |      |             |
-| Vistasoft                       |   ✓   |   ✓    |  ✓  |      |      ✓      |
-| BrainNetViewer                  |   ✓   |        |  ✓  |  ✓   |             |
-| mrtools                         |   ✓   |   ✓    | ✓\* |      |             |
-| FieldTrip                       |   ✓   |   ✓    |     |      |             |
-| ECoG/fMRI visualization toolbox |       |   ✓    | ✓\* |      |             |
-| plotSurfaceROIBoundary          |       |   ✓    | ✓\* |      |             |
-| Brainspace                      |       |   ✓    | ✓\* |      |             |
-| CandlabCore                     |   ✓   |        |  ✓  |      |             |
-| ENIGMA toolbox                  |       |        |  ✓  |      |             |
 
 \
+**Table 1. Examples of code-based neuroimaging visualizations tools that can be accessed directly within R, MATLAB and Python environments.**
+
++------------------------+-----------+-----------+-----------+-----------+-------------+
+|                        | Voxel     | Vertex    | ROI       | Edge      | Streamlines |
++:=======================+:==========+:==========+:==========+:==========+:============+
+| **R**                  |           |           |           |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+|  ANTsR                 | ✓         | ✓         | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| brainconn              |           |           |           | ✓         |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| brainR                 | ✓         |           | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| ciftitools             | ✓         | ✓         | ✓\*       |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| fsbrain                | ✓         | ✓         | ✓\*       |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| ggseg                  |           |           | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| neurobase              | ✓         |           |           |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| oro.nifti              | ✓         |           |           |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| **Python**             |           |           |           |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| ANTsPy                 | ✓         | ✓         | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| brainiak               | ✓         |           |           |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| Brainplotlib           |           | ✓         | ✓\*       |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| Brainspace/surfplot    |           | ✓         | ✓\*       |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| DIPY                   | ✓         |           |           |           | ✓           |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| ENIGMA toolbox         |           |           | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| FSLeyes                | ✓         | ✓         | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| ggseg                  |           |           | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| graphpype              |           |           |           | ✓         |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| MMVT                   |           | ✓         | ✓         | ✓         |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| MNE                    | ✓         | ✓         | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| mrivis                 | ✓         |           |           |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| NaNSlice               | ✓         |           |           |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| netneurotools          |           | ✓         | ✓\*       |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| nilearn                | ✓         | ✓         | ✓         | ✓         |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| niwidget               | ✓         | ✓         |           |           | ✓           |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| Pycortex               | ✓         | ✓         | ✓\*       |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| pySurfer               |           | ✓         | ✓\*       |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| surfice                | ✓         | ✓         | ✓         | ✓         | ✓           |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| surfplot               |           | ✓         | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| Visbrain               | ✓         | ✓         | ✓         | ✓         |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| **MATLAB**             |           |           |           |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| BrainNetViewer         | ✓         |           | ✓         | ✓         |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| Brainspace             |           | ✓         | ✓\*       |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| Brainstorm             | ✓         | ✓         | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| bspmview               | ✓         |           | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| CandlabCore            | ✓         |           | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| ECoG/fMRI Vis toolbox  |           | ✓         | ✓\*       |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| ENIGMA toolbox         |           |           | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| FieldTrip              | ✓         | ✓         |           |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| Lead-DBS               | ✓         |           | ✓         |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| mni2fs                 |           | ✓         |           |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| mrtools                | ✓         | ✓         | ✓\*       |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| plotSurfaceROIBoundary |           | ✓         | ✓\*       |           |             |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+| Vistasoft              | ✓         | ✓         | ✓         |           | ✓           |
++------------------------+-----------+-----------+-----------+-----------+-------------+
+Note: The tools listed contain functionality to generate at least close-to-publication-ready neuroimaging figures via user-entered code within R, MATLAB and Python environments.This list does not include cross-platform general purpose visualization software. \
+\*Cortex only
 
 # Examples of neuroimaging visualization packages available in R
 
@@ -132,7 +198,7 @@ for (f in 1:length(fig_name)) {
                                                              height=ggplot2::unit(1,"npc")))
 }
 
-patchwork <- figs[[1]]/figs[[2]]|(figs[[6]]/(figs[[8]]|figs[[9]]))/figs[[7]]|(figs[[3]]/figs[[4]]/figs[[10]])
+patchwork <- figs[[1]]/figs[[2]]|((figs[[6]]/(figs[[8]]|figs[[9]]))/figs[[7]])+plot_layout(heights = c(0.8,0.8,1.5))|((figs[[3]]/figs[[4]]/figs[[10]])+plot_layout(heights = c(0.5,1,1)))
 
 
 
@@ -172,7 +238,9 @@ Analyses which divide the brain into discrete regions and examine pair-wise depe
 
 Most of the tools introduced above do not require a strong knowledge of programming, but there is still a steeper learning curve when compared to use a GUI. This is especially true when learning how to make fine adjustments to visual auxiliary such as legend placement, font size and multi-panel figure positioning, for the purpose of a publication-ready figure. While most code-based tools offer some control over these finer steps, there are differences between them in feature availability and usability. Relatedly,while some interactive image viewers which can be opened within integrated development environment (Muschelli, 2016), for quick and interactive viewing of single images, GUI tool can be faster and more practical.
 
-Often cerebellar and brain-stem regions are not well represented in software (e.g. Figure 1), potentially mirroring a cortico-centric sentiment that has prevailed in human neuroimaging (Chin, Chang, & Holmes). Likewise, custom regions of interest, such as non-standard subcortical atlas schemes is not yet straight forward, and usually require multiple functions and packages to visualize. Finally, some neuroimaging related data types, such as streamlines resulting from DWI-based tractography, are still not well represented in code-based vizualistion tools.
+Often cerebellar and brain-stem regions are not well represented in software (e.g. Figure 1), potentially mirroring a cortico-centric sentiment that has prevailed in human neuroimaging (Chin, Chang, & Holmes). Likewise, custom non-cortical atlases such as non-standard subcortical atlas schemes is not yet straight forward, and usually require multiple functions and packages to visualize. Finally, some neuroimaging related data types, such as streamlines resulting from DWI-based tractography, are still not well represented in code-based visualization tools.
+
+As can be seen in Table 1, there are usually multiple packages within each programming environment which are capable of visualizing each data time. While this provide choice for advanced users, it can also lead to confusion for novice users who may not be familiar with the nuanced differences between tools. Future work should continue to consolidate brain visualization methods into unified beginner-friendly tools which are capable of plotting multiple data types.
 
 # References
 
@@ -216,7 +284,8 @@ Schäfer, T., & Ecker, C. (2020). fsbrain: an R package for the visualization of
 
 Chin, R., Chang, S. W., & Holmes, A. J. (2022). Beyond cortex: The evolution of the human brain. *Psychological Review*.
 
-### Supplement (Code used to generate figure)
+
+# Supplement (Code used to generate Figures)
 
 \singlespacing
 
@@ -265,7 +334,7 @@ effect <- readnii("data/MNI152_effect_size.nii.gz")
 #Threshold the statistic map so only values about a specified amount are displayed
 effect[effect<0.3] <- NA 
 
-#Set the breaks/intervas you want on the color bar (e.g. from .3 to .6, by intervals of 0.005)
+#Set the breaks/intervals you want on the color bar (e.g. from .3 to .6, by intervals of 0.005)
 breaks = seq(.3,.6, by=0.005)
 
 #[Optional] If you want to output the figure as a .png, open a png image device
@@ -277,10 +346,10 @@ ortho2(x = template,   #Specify the background template
        crosshairs = F, #Remove the cross-hairs
        bg = "white",   #Make the background white 
        NA.x = T,       #Do not display NA values
-       col.y= viridis::viridis(n = 500), #Select the colour scale. In this case I have used the viridis scale from the viridis package. 
+       col.y= viridis::viridis(n = 500), #Select the color scale. In this case I have used the viridis scale from the viridis package. 
        xyz = c(70,50,80), #set the x y & z slice you want to visualise
-       useRaster = T,   #Sometimes using Raster makes for clearer plots
-       ycolorbar = TRUE, #Add a colorbar
+       useRaster = T,     #Sometimes using Raster makes for clearer plots
+       ycolorbar = TRUE,  #Add a color bar
        mfrow = c(1,1)) + 
   colorbar(breaks,col = viridis::viridis(n=length(breaks)-1), 
            text.col = "black", labels = TRUE, maxleft = 0.95)  #Set the specifications for the colorbar
@@ -361,6 +430,7 @@ rgl.close()
 
 
 library(fsbrain)
+library(rgl)
 
 #download_optional_data()
 #download_fsaverage(accept_freesurfer_license = TRUE)
@@ -369,20 +439,18 @@ subjects_dir <- get_optional_data_filepath("subjects_dir")
 
 subject_id <- 'subject1' 
 
-colourmap <- colorRampPalette(viridis::viridis(n = 10000))
+colourmap <- colorRampPalette(viridis::viridis(n = 1000))
 fsbrain.set.default.figsize(700, 700);
 
-cm = vis.subject.morph.standard(subjects_dir, 
+brain = vis.subject.morph.native(subjects_dir, 
                                 subject_id, 'sulc', 
-                                fwhm='10', 
                                 cortex_only = T, 
                                 views=NULL, 
+                                draw_colorbar = FALSE,
                                 makecmap_options = list('colFn'=colourmap))
-img = export(cm, colorbar_legend='Effect', output_img = "data/fig1d.png")
 
+img = export(brain, draw_colorbar = FALSE, output_img = "data/fig1d.png")
 
-rgl.snapshot("data/fig1d.png")
-rgl.close()
 
 
 ```

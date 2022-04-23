@@ -26,22 +26,22 @@
    \And
     Loïc Labache
    \\
-    School of Psychology \\
     Department of Psychology \\
+    Yale University \\
   CT, USA, 06511 \\
   \texttt{} \\
    \And
     Edwina R Orchard
    \\
-    School of Psychology \\
     Department of Psychology \\
+    Yale University \\
   CT, USA, 06511 \\
   \texttt{} \\
    \And
     Avram Holmes
    \\
-    School of Psychology \\
     Department of Psychology \\
+    Yale University \\
   CT, USA, 06511 \\
   \texttt{} \\
   }
@@ -114,13 +114,19 @@
 
 
 \begin{abstract}
-Add words here.
+
 \end{abstract}
 
 \keywords{
-    Brain Visualization
+    Neuroimaging visualization
    \and
-    MRI Visualization
+    Reproducibility
+   \and
+    Programmatic figures
+   \and
+    Open Science
+   \and
+    R
   }
 
 \hypertarget{introduction}{%
@@ -158,47 +164,69 @@ Increasingly popular software such as \emph{R Markdown}, \emph{Quarto} and \emph
 Neuroimaging data are often spatially 3D and can have multiple time points, adding a 4th dimension (e.g., fMRI data). Thus, communicating findings or evaluating quality using static 2D slices is challenging, and may not be the best representation of the data, or the interpretations. While well-curated 3D renderings can help with spatial localisation (see Madan, 2015; Pernet \& Madan, 2019), in the end, static images can only provide an incomplete representation of the data, and forces researchers to choose the ``best'' angle or slice to show, which often involves compromising one result to emphasize another. An added advantage of some of the code-based tools is that you can generate `rich' media like interactive widgets -- figures or animations, which allow users to zoom, rotate and scroll through slices. Interacting with a figure in this way can improve scientific communication of findings. Linking to or even embedding these videos or interactive figures in papers can greatly enhance the communication of findings and make your paper more engaging for the reader. Such rich brain visualizations lend themselves to being embedded or shared on science communication mediums other than academic papers - such as presentations, websites and social media - all of which can promote the communication of your research with peers and a reach larger audiences (Li and Xie, 2020). This last point is becoming increasingly salient as marketing science on social media has become a core medium for spreading discoveries, science communication to the public, and even a primary avenue for employment opportunities for early-career researchers (Baker, 2015; Lee, 2019). Overall, public engagement is one of the cornerstones of science, and the images we create are at the center of the process.
 
 \hfill\break
+\textbf{Table 1. Examples of code-based neuroimaging visualizations tools that can be accessed directly within R, MATLAB and Python environments.}
 
-\begin{longtable}[]{@{}lccccc@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.29}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.14}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.14}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.14}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.14}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.16}}@{}}
 \toprule
 & Voxel & Vertex & ROI & Edge & Streamlines \\
 \midrule
 \endhead
-R & & & & & \\
+\textbf{R} & & & & & \\
+ANTsR & ✓ & ✓ & ✓ & & \\
+brainconn & & & & ✓ & \\
+brainR & ✓ & & ✓ & & \\
 ciftitools & ✓ & ✓ & ✓* & & \\
 fsbrain & ✓ & ✓ & ✓* & & \\
-oro.nifti & ✓ & & & & \\
-neurobase & ✓ & & & & \\
 ggseg & & & ✓ & & \\
-brainconn & & & & ✓ & \\
-Python & & & & & \\
-surfice & ✓ & ✓ & ✓ & ✓ & ✓ \\
-nilearn & ✓ & ✓ & ✓ & ✓ & \\
-Visbrain & ✓ & ✓ & ✓ & ✓ & \\
-Pycortex & ✓ & ✓ & ✓* & & \\
-pySurfer & & ✓ & ✓* & & \\
-Brainspace/surfplot & & ✓ & ✓* & & \\
-netneurotools & & ✓ & ✓* & & \\
+neurobase & ✓ & & & & \\
+oro.nifti & ✓ & & & & \\
+\textbf{Python} & & & & & \\
+ANTsPy & ✓ & ✓ & ✓ & & \\
+brainiak & ✓ & & & & \\
 Brainplotlib & & ✓ & ✓* & & \\
+Brainspace/surfplot & & ✓ & ✓* & & \\
 DIPY & ✓ & & & & ✓ \\
-mrivis & ✓ & & & & \\
 ENIGMA toolbox & & & ✓ & & \\
+FSLeyes & ✓ & ✓ & ✓ & & \\
 ggseg & & & ✓ & & \\
 graphpype & & & & ✓ & \\
-MATLAB & & & & & \\
-Vistasoft & ✓ & ✓ & ✓ & & ✓ \\
+MMVT & & ✓ & ✓ & ✓ & \\
+MNE & ✓ & ✓ & ✓ & & \\
+mrivis & ✓ & & & & \\
+NaNSlice & ✓ & & & & \\
+netneurotools & & ✓ & ✓* & & \\
+nilearn & ✓ & ✓ & ✓ & ✓ & \\
+niwidget & ✓ & ✓ & & & ✓ \\
+Pycortex & ✓ & ✓ & ✓* & & \\
+pySurfer & & ✓ & ✓* & & \\
+surfice & ✓ & ✓ & ✓ & ✓ & ✓ \\
+surfplot & & ✓ & ✓ & & \\
+Visbrain & ✓ & ✓ & ✓ & ✓ & \\
+\textbf{MATLAB} & & & & & \\
 BrainNetViewer & ✓ & & ✓ & ✓ & \\
-mrtools & ✓ & ✓ & ✓* & & \\
-FieldTrip & ✓ & ✓ & & & \\
-ECoG/fMRI visualization toolbox & & ✓ & ✓* & & \\
-plotSurfaceROIBoundary & & ✓ & ✓* & & \\
 Brainspace & & ✓ & ✓* & & \\
+Brainstorm & ✓ & ✓ & ✓ & & \\
+bspmview & ✓ & & ✓ & & \\
 CandlabCore & ✓ & & ✓ & & \\
+ECoG/fMRI Vis toolbox & & ✓ & ✓* & & \\
 ENIGMA toolbox & & & ✓ & & \\
+FieldTrip & ✓ & ✓ & & & \\
+Lead-DBS & ✓ & & ✓ & & \\
+mni2fs & & ✓ & & & \\
+mrtools & ✓ & ✓ & ✓* & & \\
+plotSurfaceROIBoundary & & ✓ & ✓* & & \\
+Vistasoft & ✓ & ✓ & ✓ & & ✓ \\
 \bottomrule
 \end{longtable}
 
-\hfill\break
+Note: The tools listed contain functionality to generate at least close-to-publication-ready neuroimaging figures via user-entered code within R, MATLAB and Python environments.This list does not include cross-platform general purpose visualization software.\\
+*Cortex only
 
 \hypertarget{examples-of-neuroimaging-visualization-packages-available-in-r}{%
 \section{Examples of neuroimaging visualization packages available in R}\label{examples-of-neuroimaging-visualization-packages-available-in-r}}
@@ -241,7 +269,9 @@ Analyses which divide the brain into discrete regions and examine pair-wise depe
 
 Most of the tools introduced above do not require a strong knowledge of programming, but there is still a steeper learning curve when compared to use a GUI. This is especially true when learning how to make fine adjustments to visual auxiliary such as legend placement, font size and multi-panel figure positioning, for the purpose of a publication-ready figure. While most code-based tools offer some control over these finer steps, there are differences between them in feature availability and usability. Relatedly,while some interactive image viewers which can be opened within integrated development environment (Muschelli, 2016), for quick and interactive viewing of single images, GUI tool can be faster and more practical.
 
-Often cerebellar and brain-stem regions are not well represented in software (e.g.~Figure 1), potentially mirroring a cortico-centric sentiment that has prevailed in human neuroimaging (Chin, Chang, \& Holmes). Likewise, custom regions of interest, such as non-standard subcortical atlas schemes is not yet straight forward, and usually require multiple functions and packages to visualize. Finally, some neuroimaging related data types, such as streamlines resulting from DWI-based tractography, are still not well represented in code-based vizualistion tools.
+Often cerebellar and brain-stem regions are not well represented in software (e.g.~Figure 1), potentially mirroring a cortico-centric sentiment that has prevailed in human neuroimaging (Chin, Chang, \& Holmes). Likewise, custom non-cortical atlases such as non-standard subcortical atlas schemes is not yet straight forward, and usually require multiple functions and packages to visualize. Finally, some neuroimaging related data types, such as streamlines resulting from DWI-based tractography, are still not well represented in code-based visualization tools.
+
+As can be seen in Table 1, there are usually multiple packages within each programming environment which are capable of visualizing each data time. While this provide choice for advanced users, it can also lead to confusion for novice users who may not be familiar with the nuanced differences between tools. Future work should continue to consolidate brain visualization methods into unified beginner-friendly tools which are capable of plotting multiple data types.
 
 \hypertarget{references}{%
 \section{References}\label{references}}
@@ -286,8 +316,8 @@ Schäfer, T., \& Ecker, C. (2020). fsbrain: an R package for the visualization o
 
 Chin, R., Chang, S. W., \& Holmes, A. J. (2022). Beyond cortex: The evolution of the human brain. \emph{Psychological Review}.
 
-\hypertarget{supplement-code-used-to-generate-figure}{%
-\subsubsection{Supplement (Code used to generate figure)}\label{supplement-code-used-to-generate-figure}}
+\hypertarget{supplement-code-used-to-generate-figures}{%
+\section{Supplement (Code used to generate Figures)}\label{supplement-code-used-to-generate-figures}}
 
 \singlespacing
 
@@ -307,7 +337,7 @@ Chin, R., Chang, S. W., \& Holmes, A. J. (2022). Beyond cortex: The evolution of
 \CommentTok{\#Threshold the statistic map so only values about a specified amount are displayed}
 \NormalTok{effect[effect}\SpecialCharTok{\textless{}}\FloatTok{0.3}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA} 
 
-\CommentTok{\#Set the breaks/intervas you want on the color bar (e.g. from .3 to .6, by intervals of 0.005)}
+\CommentTok{\#Set the breaks/intervals you want on the color bar (e.g. from .3 to .6, by intervals of 0.005)}
 \NormalTok{breaks }\OtherTok{=} \FunctionTok{seq}\NormalTok{(.}\DecValTok{3}\NormalTok{,.}\DecValTok{6}\NormalTok{, }\AttributeTok{by=}\FloatTok{0.005}\NormalTok{)}
 
 \CommentTok{\#[Optional] If you want to output the figure as a .png, open a png image device}
@@ -319,10 +349,10 @@ Chin, R., Chang, S. W., \& Holmes, A. J. (2022). Beyond cortex: The evolution of
        \AttributeTok{crosshairs =}\NormalTok{ F, }\CommentTok{\#Remove the cross{-}hairs}
        \AttributeTok{bg =} \StringTok{"white"}\NormalTok{,   }\CommentTok{\#Make the background white }
        \AttributeTok{NA.x =}\NormalTok{ T,       }\CommentTok{\#Do not display NA values}
-       \AttributeTok{col.y=}\NormalTok{ viridis}\SpecialCharTok{::}\FunctionTok{viridis}\NormalTok{(}\AttributeTok{n =} \DecValTok{500}\NormalTok{), }\CommentTok{\#Select the colour scale. In this case I have used the viridis scale from the viridis package. }
+       \AttributeTok{col.y=}\NormalTok{ viridis}\SpecialCharTok{::}\FunctionTok{viridis}\NormalTok{(}\AttributeTok{n =} \DecValTok{500}\NormalTok{), }\CommentTok{\#Select the color scale. In this case I have used the viridis scale from the viridis package. }
        \AttributeTok{xyz =} \FunctionTok{c}\NormalTok{(}\DecValTok{70}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{80}\NormalTok{), }\CommentTok{\#set the x y \& z slice you want to visualise}
-       \AttributeTok{useRaster =}\NormalTok{ T,   }\CommentTok{\#Sometimes using Raster makes for clearer plots}
-       \AttributeTok{ycolorbar =} \ConstantTok{TRUE}\NormalTok{, }\CommentTok{\#Add a colorbar}
+       \AttributeTok{useRaster =}\NormalTok{ T,     }\CommentTok{\#Sometimes using Raster makes for clearer plots}
+       \AttributeTok{ycolorbar =} \ConstantTok{TRUE}\NormalTok{,  }\CommentTok{\#Add a color bar}
        \AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)) }\SpecialCharTok{+} 
   \FunctionTok{colorbar}\NormalTok{(breaks,}\AttributeTok{col =}\NormalTok{ viridis}\SpecialCharTok{::}\FunctionTok{viridis}\NormalTok{(}\AttributeTok{n=}\FunctionTok{length}\NormalTok{(breaks)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{), }
            \AttributeTok{text.col =} \StringTok{"black"}\NormalTok{, }\AttributeTok{labels =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{maxleft =} \FloatTok{0.95}\NormalTok{)  }\CommentTok{\#Set the specifications for the colorbar}
@@ -406,6 +436,7 @@ Chin, R., Chang, S. W., \& Holmes, A. J. (2022). Beyond cortex: The evolution of
 
 
 \FunctionTok{library}\NormalTok{(fsbrain)}
+\FunctionTok{library}\NormalTok{(rgl)}
 
 \CommentTok{\#download\_optional\_data()}
 \CommentTok{\#download\_fsaverage(accept\_freesurfer\_license = TRUE)}
@@ -414,20 +445,17 @@ Chin, R., Chang, S. W., \& Holmes, A. J. (2022). Beyond cortex: The evolution of
 
 \NormalTok{subject\_id }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}subject1\textquotesingle{}} 
 
-\NormalTok{colourmap }\OtherTok{\textless{}{-}} \FunctionTok{colorRampPalette}\NormalTok{(viridis}\SpecialCharTok{::}\FunctionTok{viridis}\NormalTok{(}\AttributeTok{n =} \DecValTok{10000}\NormalTok{))}
+\NormalTok{colourmap }\OtherTok{\textless{}{-}} \FunctionTok{colorRampPalette}\NormalTok{(viridis}\SpecialCharTok{::}\FunctionTok{viridis}\NormalTok{(}\AttributeTok{n =} \DecValTok{1000}\NormalTok{))}
 \FunctionTok{fsbrain.set.default.figsize}\NormalTok{(}\DecValTok{700}\NormalTok{, }\DecValTok{700}\NormalTok{);}
 
-\NormalTok{cm }\OtherTok{=} \FunctionTok{vis.subject.morph.standard}\NormalTok{(subjects\_dir, }
+\NormalTok{brain }\OtherTok{=} \FunctionTok{vis.subject.morph.native}\NormalTok{(subjects\_dir, }
 \NormalTok{                                subject\_id, }\StringTok{\textquotesingle{}sulc\textquotesingle{}}\NormalTok{, }
-                                \AttributeTok{fwhm=}\StringTok{\textquotesingle{}10\textquotesingle{}}\NormalTok{, }
                                 \AttributeTok{cortex\_only =}\NormalTok{ T, }
                                 \AttributeTok{views=}\ConstantTok{NULL}\NormalTok{, }
+                                \AttributeTok{draw\_colorbar =} \ConstantTok{FALSE}\NormalTok{,}
                                 \AttributeTok{makecmap\_options =} \FunctionTok{list}\NormalTok{(}\StringTok{\textquotesingle{}colFn\textquotesingle{}}\OtherTok{=}\NormalTok{colourmap))}
-\NormalTok{img }\OtherTok{=} \FunctionTok{export}\NormalTok{(cm, }\AttributeTok{colorbar\_legend=}\StringTok{\textquotesingle{}Effect\textquotesingle{}}\NormalTok{, }\AttributeTok{output\_img =} \StringTok{"data/fig1d.png"}\NormalTok{)}
 
-
-\FunctionTok{rgl.snapshot}\NormalTok{(}\StringTok{"data/fig1d.png"}\NormalTok{)}
-\FunctionTok{rgl.close}\NormalTok{()}
+\NormalTok{img }\OtherTok{=} \FunctionTok{export}\NormalTok{(brain, }\AttributeTok{draw\_colorbar =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{output\_img =} \StringTok{"data/fig1d.png"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
