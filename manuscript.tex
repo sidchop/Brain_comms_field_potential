@@ -150,7 +150,7 @@ While some GUI-based tools have historically offered command-line access to gene
 
 Being able to exactly replicate your figures via code has marked advantages beyond positive open science practices. In particular, the ability to reprogram inputs (such as statistical maps) and settings (such as color schemes, thresholds, and visual orientations) can streamline your entire scientific workflow. Changing inputs and settings via code allows for the easy production of multiple figures, such as those resulting from multiple analyses which require similar visualizations. A simple for-loop or copying and pasting the code with altered input and/or settings-of-interest can be a powerful method for exploring visualization options or rapidly creating multi-panel figures. Likewise, an arduous request from a reviewer or collaborator to alter the image processing or analysis becomes less of a burden when the associated figures can be re-generated with a few lines of code, as opposed to re-pasting and re-illustrating them manually. Having a code-base with modifiable inputs can mean that the generation of visualizations requires less time, energy and effort than image and instance specific GUI-based generation. This also makes it easier to generate consistent figures across subsequent projects. Keep in mind that the gains of writing code for your figures are cumulative, and in addition to improving your programming, you start to build a code-base for figure generation that you can continue to reuse and share throughout your scientific career.
 
-Precise controls via code over visualization settings, such as color schemes, legend placement and camera angles, can provide you with much greater flexibility over visualizations. Nonetheless, part of the appeal of GUI-based tools is that the presets for such settings can provide a useful starting point and reduce the decision burden on novice users. However, similar presets are often available in the form of default settings across most code-based packages, negating the need for the user to manually enter each and every choice of setting required for creating an image. Most code-based tools also come with documentation, with R-packages on the \emph{CRAN} or \emph{Neuroconductor} (Muschelli et al., 2019) repositories having compulsory requirements for detailed guidance. Recent packages have even started to include detailed documentation in GitHub repositories, or even entire papers (e.g., Pham, Muschelli, \& Mejia, 2022; Mowinckel \& Vidal-Piñeiro, 2020; Huntenburg et at., 2017; Schäfer \& Ecker, 2020) which provide examples of figures which can be used as starting points or templates for new users. As the popularity of code-sharing for figure increases, there will be a cornucopia of templates that can be used as the basis for new figures.
+Precise controls via code over visualization settings, such as color schemes, legend placement and camera angles, can provide you with much greater flexibility over visualizations. Nonetheless, part of the appeal of GUI-based tools is that the presets for such settings can provide a useful starting point and reduce the decision burden on novice users. However, similar presets are often available in the form of default settings across most code-based packages, negating the need for the user to manually enter each and every choice of setting required for creating an image. Most code-based tools also come with documentation, with R-packages on the \emph{CRAN} or \emph{Neuroconductor} (Muschelli et al., 2019) repositories having compulsory requirements for detailed guidance. Recent packages have started to include detailed documentation in GitHub repositories, or even entire papers (e.g., Pham, Muschelli, \& Mejia, 2022; Mowinckel \& Vidal-Piñeiro, 2020; Huntenburg et at., 2017; Schäfer \& Ecker, 2020) which provide examples of figures which can be used as starting points or templates for new users. As the popularity of code-sharing for figure increases, there will be a cornucopia of templates that can be used as the basis for new figures.
 
 While brain visualizations are often thought of as the end results of analyses, they also form a vital part of quality control for imaging data. Tools to automatically detect artefacts, de-noise the data and generate derivatives are becoming more robust, but we are not yet at the stage where visualizing the data during processing is no longer necessary. Nonetheless, when working with large datasets such as Human Connectome Project (Van Essen et al., 2013) or UK BioBank (Sudlow et al., 2015), it is unfeasible to use traditional GUI-based tool to visually examine the data. The time it takes to open a single file and achieve the desired visualization settings vastly compounds when working with large datasets. Knowing how to programmatically generate brain visualizations can allow you to iterate your visualization code over each image of a large datasets making checking the quality of each data processing or analysis step accessible and achievable. The visual outputs of each iteration can be complied into accessible documents which can be easily scrolled, with more advanced usage allowing for the creation of interactive HTML reports, similar to those created by standardized data processing tools like \emph{fmriprep} (Esteban et al., 2019). Increasing capacity to conduct visual quality control on larger datasets can increase the identification of processing errors and result in more reliable and valid findings from your data.
 
@@ -159,7 +159,7 @@ While brain visualizations are often thought of as the end results of analyses, 
 
 Often programming languages such as R, Python and MATLAB are used for the analysis and non-brain visualizations in neuroimaging studies, but the brain visualizations resulting from these analyses are outsourced to separate GUI's of tools such as \emph{FSLeyes}, \emph{Freeview} or \emph{ITK-snap}. Switching from your analysis environment to a GUI-based visualization process can be a cumbersome deviation from the scientific workflow. This can make debugging errors more difficult, as you have to regularly switch program to visually examine the results of any modifications or adjustments to prior analyses. Using the brain visualization tools that already exist within your chosen programming environment can provide instant visual feedback on the impact of modifications to processing or analyses.
 
-Increasingly popular software such as \emph{R Markdown}, \emph{Quarto} and \emph{Jupyter Notebook} allow for the mixing of prose and code in a single script, resulting in fully reproducible and publication ready papers. By using code-based tools available within your preferred environment, brain visualizations can be directly integrated and embedded within a paper or report. For instance, a fully reproducible version of the current paper can be found on \href{https://github.com/sidchop/Brain_comms_field_potential}{GitHub}. Some journals that publish neuroimaging studies are moving towards allowing reproducible manuscripts, including reproducible figures (e.g.~\emph{e-Life}, \emph{Aperture Neuro}), with other journals like \emph{F1000Research} and \emph{GigaScience} even allowing on-demand re-running of code computational environment linked to the associated article using `compute capsules' from the cloud-based platform Code Ocean (Code Ocean, 2021),
+Increasingly popular software such as \emph{R Markdown}, \emph{Quarto} and \emph{Jupyter Notebook} allow for the mixing of prose and code in a single script, resulting in fully reproducible and publication ready papers. By using code-based tools available within your preferred environment, brain visualizations can be directly integrated and embedded within a paper or report. For instance, a fully reproducible version of the current paper can be found on \href{https://github.com/sidchop/Brain_comms_field_potential}{GitHub}. Some journals that publish neuroimaging studies are moving towards allowing reproducible manuscripts, including reproducible figures (e.g.~\emph{e-Life}, \emph{Aperture Neuro}), with other journals like \emph{F1000Research} and \emph{GigaScience} even allowing on-demand re-running of code computational environment linked to the associated article using `compute capsules' from the cloud-based platform Code Ocean (Code Ocean, 2021).
 
 Neuroimaging data are often spatially 3D and can have multiple time points, adding a 4th dimension (e.g., fMRI data). Thus, communicating findings or evaluating quality using static 2D slices is challenging, and may not be the best representation of the data, or the interpretations. While well-curated 3D renderings can help with spatial localisation (see Madan, 2015; Pernet \& Madan, 2019), in the end, static images can only provide an incomplete representation of the data, and forces researchers to choose the ``best'' angle or slice to show, which often involves compromising one result to emphasize another. An added advantage of some of the code-based tools is that you can generate `rich' media like interactive widgets -- figures or animations, which allow users to zoom, rotate and scroll through slices. Interacting with a figure in this way can improve scientific communication of findings. Linking to or even embedding these videos or interactive figures in papers can greatly enhance the communication of findings and make your paper more engaging for the reader. Such rich brain visualizations lend themselves to being embedded or shared on science communication mediums other than academic papers - such as presentations, websites and social media - all of which can promote the communication of your research with peers and a reach larger audiences (Li and Xie, 2020). This last point is becoming increasingly salient as marketing science on social media has become a core medium for spreading discoveries, science communication to the public, and even a primary avenue for employment opportunities for early-career researchers (Baker, 2015; Lee, 2019). Overall, public engagement is one of the cornerstones of science, and the images we create are at the center of the process.
 
@@ -269,9 +269,9 @@ Analyses which divide the brain into discrete regions and examine pair-wise depe
 
 Most of the tools introduced above do not require a strong knowledge of programming, but there is still a steeper learning curve when compared to use a GUI. This is especially true when learning how to make fine adjustments to visual auxiliary such as legend placement, font size and multi-panel figure positioning, for the purpose of a publication-ready figure. While most code-based tools offer some control over these finer steps, there are differences between them in feature availability and usability. Relatedly,while some interactive image viewers which can be opened within integrated development environment (Muschelli, 2016), for quick and interactive viewing of single images, GUI tool can be faster and more practical.
 
-Often cerebellar and brain-stem regions are not well represented in software (e.g.~Figure 1), potentially mirroring a cortico-centric sentiment that has prevailed in human neuroimaging (Chin, Chang, \& Holmes). Likewise, custom non-cortical atlases such as non-standard subcortical atlas schemes is not yet straight forward, and usually require multiple functions and packages to visualize. Finally, some neuroimaging related data types, such as streamlines resulting from DWI-based tractography, are still not well represented in code-based visualization tools.
+Often cerebellar and brain-stem regions are not well represented in software (e.g.~Figure 1), potentially mirroring a cortico-centric sentiment that has prevailed in human neuroimaging (Chin, Chang, \& Holmes, 2022). Likewise, custom non-cortical atlases such as non-standard subcortical atlas schemes is not yet straight forward, and usually require multiple functions and packages to visualize. Finally, some neuroimaging related data types, such as streamlines resulting from DWI-based tractography, are still not well represented in code-based visualization tools.
 
-As can be seen in Table 1, there are usually multiple packages within each programming environment which are capable of visualizing each data time. While this provide choice for advanced users, it can also lead to confusion for novice users who may not be familiar with the nuanced differences between tools. Future work should continue to consolidate brain visualization methods into unified beginner-friendly tools which are capable of plotting multiple data types.
+As can be seen in Table 1, there are usually multiple packages within each programming environment which are capable of visualizing each data time. While this provide choice for advanced users, it can also lead to confusion for novice users who may not be familiar with the nuanced differences between tools. Future work should continue to consolidate brain visualization methods into unified beginner-friendly code-based tools which are capable of plotting multiple data types.
 
 \hypertarget{references}{%
 \section{References}\label{references}}
@@ -326,7 +326,6 @@ Chin, R., Chang, S. W., \& Holmes, A. J. (2022). Beyond cortex: The evolution of
 \CommentTok{\#Figure 1A}
 
 \FunctionTok{library}\NormalTok{(neurobase)}
-\FunctionTok{library}\NormalTok{(ggplotify)}
 
 \CommentTok{\#Load in a nifti (.nii.gz) file of a standardized template so use as a background. }
 \NormalTok{template }\OtherTok{\textless{}{-}} \FunctionTok{readnii}\NormalTok{(}\StringTok{\textquotesingle{}data/MNI152\_T1\_1mm\_brain.nii.gz\textquotesingle{}}\NormalTok{) }\CommentTok{\#load the nifti file into R}
@@ -349,12 +348,12 @@ Chin, R., Chang, S. W., \& Holmes, A. J. (2022). Beyond cortex: The evolution of
        \AttributeTok{crosshairs =}\NormalTok{ F, }\CommentTok{\#Remove the cross{-}hairs}
        \AttributeTok{bg =} \StringTok{"white"}\NormalTok{,   }\CommentTok{\#Make the background white }
        \AttributeTok{NA.x =}\NormalTok{ T,       }\CommentTok{\#Do not display NA values}
-       \AttributeTok{col.y=}\NormalTok{ viridis}\SpecialCharTok{::}\FunctionTok{viridis}\NormalTok{(}\AttributeTok{n =} \DecValTok{500}\NormalTok{), }\CommentTok{\#Select the color scale. In this case I have used the viridis scale from the viridis package. }
+       \AttributeTok{col.y=} \FunctionTok{rev}\NormalTok{(viridis}\SpecialCharTok{::}\FunctionTok{inferno}\NormalTok{(}\AttributeTok{n =} \DecValTok{500}\NormalTok{)), }\CommentTok{\#Select the color scale. In this case I have used the viridis scale from the viridis package. }
        \AttributeTok{xyz =} \FunctionTok{c}\NormalTok{(}\DecValTok{70}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{80}\NormalTok{), }\CommentTok{\#set the x y \& z slice you want to visualise}
        \AttributeTok{useRaster =}\NormalTok{ T,     }\CommentTok{\#Sometimes using Raster makes for clearer plots}
        \AttributeTok{ycolorbar =} \ConstantTok{TRUE}\NormalTok{,  }\CommentTok{\#Add a color bar}
        \AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)) }\SpecialCharTok{+} 
-  \FunctionTok{colorbar}\NormalTok{(breaks,}\AttributeTok{col =}\NormalTok{ viridis}\SpecialCharTok{::}\FunctionTok{viridis}\NormalTok{(}\AttributeTok{n=}\FunctionTok{length}\NormalTok{(breaks)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{), }
+  \FunctionTok{colorbar}\NormalTok{(breaks, }\AttributeTok{col =} \FunctionTok{rev}\NormalTok{(viridis}\SpecialCharTok{::}\FunctionTok{inferno}\NormalTok{(}\AttributeTok{n=}\FunctionTok{length}\NormalTok{(breaks)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)), }
            \AttributeTok{text.col =} \StringTok{"black"}\NormalTok{, }\AttributeTok{labels =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{maxleft =} \FloatTok{0.95}\NormalTok{)  }\CommentTok{\#Set the specifications for the colorbar}
 
 \FunctionTok{dev.off}\NormalTok{()}
@@ -378,7 +377,7 @@ Chin, R., Chang, S. W., \& Holmes, A. J. (2022). Beyond cortex: The evolution of
 \FunctionTok{overlay}\NormalTok{(}\AttributeTok{x=}\FunctionTok{robust\_window}\NormalTok{(t1), }\AttributeTok{y=}\NormalTok{atlas, }
         \AttributeTok{plot.type =} \StringTok{"single"}\NormalTok{, }
         \AttributeTok{z=}\FunctionTok{c}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\DecValTok{30}\NormalTok{,}\DecValTok{110}\NormalTok{,}\DecValTok{10}\NormalTok{)), }
-        \AttributeTok{col.y =}  \FunctionTok{alpha}\NormalTok{(}\FunctionTok{rainbow}\NormalTok{(}\DecValTok{300}\NormalTok{), }\FloatTok{0.3}\NormalTok{),}
+        \AttributeTok{col.y =}  \FunctionTok{alpha}\NormalTok{(viridis}\SpecialCharTok{::}\FunctionTok{inferno}\NormalTok{(}\DecValTok{300}\NormalTok{), }\FloatTok{0.6}\NormalTok{),}
         \AttributeTok{plane =} \StringTok{"axial"}\NormalTok{,  }
         \AttributeTok{useRaster =}\NormalTok{ T, }
         \AttributeTok{bg =} \StringTok{"white"}\NormalTok{,}
@@ -417,7 +416,7 @@ Chin, R., Chang, S. W., \& Holmes, A. J. (2022). Beyond cortex: The evolution of
                    \AttributeTok{hemisphere =} \StringTok{"both"}\NormalTok{, }
                    \AttributeTok{view =} \StringTok{"lateral"}\NormalTok{, }
                    \AttributeTok{idx =} \DecValTok{1}\NormalTok{,}
-                   \AttributeTok{colors =}\NormalTok{ viridis}\SpecialCharTok{::}\FunctionTok{viridis}\NormalTok{(}\AttributeTok{n =} \DecValTok{100}\NormalTok{),}
+                   \AttributeTok{colors =}\NormalTok{ viridis}\SpecialCharTok{::}\FunctionTok{plasma}\NormalTok{(}\AttributeTok{n =} \DecValTok{100}\NormalTok{),}
                    \AttributeTok{zlim =} \FunctionTok{c}\NormalTok{(}\FloatTok{1.2}\NormalTok{,}\FloatTok{1.5}\NormalTok{),  }
                    \AttributeTok{legend\_embed =}\NormalTok{ T,}
                    \AttributeTok{cex.title =} \DecValTok{2}\NormalTok{)}
@@ -445,7 +444,7 @@ Chin, R., Chang, S. W., \& Holmes, A. J. (2022). Beyond cortex: The evolution of
 
 \NormalTok{subject\_id }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}subject1\textquotesingle{}} 
 
-\NormalTok{colourmap }\OtherTok{\textless{}{-}} \FunctionTok{colorRampPalette}\NormalTok{(viridis}\SpecialCharTok{::}\FunctionTok{viridis}\NormalTok{(}\AttributeTok{n =} \DecValTok{1000}\NormalTok{))}
+\NormalTok{colourmap }\OtherTok{\textless{}{-}} \FunctionTok{colorRampPalette}\NormalTok{(viridis}\SpecialCharTok{::}\FunctionTok{plasma}\NormalTok{(}\AttributeTok{n =} \DecValTok{1000}\NormalTok{))}
 \FunctionTok{fsbrain.set.default.figsize}\NormalTok{(}\DecValTok{700}\NormalTok{, }\DecValTok{700}\NormalTok{);}
 
 \NormalTok{brain }\OtherTok{=} \FunctionTok{vis.subject.morph.native}\NormalTok{(subjects\_dir, }
@@ -636,19 +635,23 @@ Chin, R., Chang, S. W., \& Holmes, A. J. (2022). Beyond cortex: The evolution of
 \CommentTok{\#Edge (also add 3d version)}
 \CommentTok{\#Fig1X}
 
-\CommentTok{\#remotes::install\_github("sidchop/brainconn")}
+\CommentTok{\#devtools::install\_github("sidchop/brainconn")}
 \FunctionTok{library}\NormalTok{(brainconn)}
 
 \NormalTok{conmat }\OtherTok{\textless{}{-}}\NormalTok{ example\_weighted\_undirected}
 \NormalTok{degree }\OtherTok{\textless{}{-}} \FunctionTok{rowSums}\NormalTok{(conmat)[}\FunctionTok{which}\NormalTok{(}\FunctionTok{rowSums}\NormalTok{(conmat)}\SpecialCharTok{!=}\DecValTok{0}\NormalTok{)]}
-\NormalTok{fig1h }\OtherTok{\textless{}{-}} \FunctionTok{brainconn}\NormalTok{(}\AttributeTok{atlas =}\StringTok{"schaefer300\_n7"}\NormalTok{, }
+
+\FunctionTok{brainconn}\NormalTok{(}\AttributeTok{atlas =}\StringTok{"schaefer300\_n7"}\NormalTok{, }
                    \AttributeTok{conmat=}\NormalTok{conmat, }
                    \AttributeTok{node.size =}\NormalTok{ degree}\SpecialCharTok{/}\DecValTok{2}\NormalTok{,}
-                   \AttributeTok{view=}\StringTok{"ortho"}\NormalTok{, }
+                   \AttributeTok{view=}\StringTok{"top"}\NormalTok{, }
                    \AttributeTok{edge.color.weighted =}\NormalTok{ T,}
-                   \AttributeTok{background.alpha =} \FloatTok{0.4}\NormalTok{, }
-                   \AttributeTok{show.legend =}\NormalTok{ F,}
-                   \AttributeTok{edge.color =} \FunctionTok{scale\_edge\_colour\_gradient2}\NormalTok{(}\AttributeTok{low=}\StringTok{\textquotesingle{}yellow\textquotesingle{}}\NormalTok{, }\AttributeTok{mid=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{, }\AttributeTok{high=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)) }
+                   \AttributeTok{background.alpha =} \FloatTok{0.8}\NormalTok{, }
+                   \AttributeTok{show.legend =}\NormalTok{ F, }
+                   \AttributeTok{edge.color =} \FunctionTok{scale\_edge\_colour\_viridis}\NormalTok{()) }
+
+
+
 \FunctionTok{ggsave}\NormalTok{(}\AttributeTok{filename =} \StringTok{\textquotesingle{}data/fig1h.png\textquotesingle{}}\NormalTok{, }
        \AttributeTok{plot =}\NormalTok{ fig1h, }
        \AttributeTok{device =} \StringTok{\textquotesingle{}png\textquotesingle{}}\NormalTok{,}
